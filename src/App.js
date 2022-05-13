@@ -1,29 +1,63 @@
-import './App.css';
-import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import { STAFFS } from './shared/staffs';
-import  StaffList from './components/StaffListComponent';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { DEPARTMENTS, STAFFS } from "./shared/staffs";
+import StaffList from "./components/StaffListComponent";
+import StaffDetail from "./components/StaffDetail";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Department from "./components/department";
+import Salary from "./components/Salary"
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      staffs: STAFFS
-    }
-  }
-  render() {
-    return (
-      <div>
-        <Navbar dark color='primary'>
-            <NavbarBrand>Ứng dụng quản lý nhân viên 1.0</NavbarBrand>
-        </Navbar>
-          <div className='container-fluid'>
-          <StaffList staffs={this.state.staffs} />
-          <p>Bấm vào tên nhân viên để xem thông tin</p>
+import "./App.css";
+
+function App() {
+  const [nhanvien, setNhanvien] = useState({
+    staffs: STAFFS,
+    departments: DEPARTMENTS,
+  });
+
+  // class App extends Component {
+  //   constructor(props) {
+  //     super(props);
+  //     nhanvien = {
+  //       staffs: STAFFS,
+  //       departments: DEPARTMENTS
+  //     };
+  //   }
+
+  //   render() {
+  return (
+    <div>
+      <BrowserRouter>
+        <Header />
+        <div className="container-fluid">
+          <Routes>
+            <Route
+              path="/"
+              element={<Navigate to="/staffs" replace={true} />}
+            />
+            <Route
+              path="staffs"
+              element={<StaffList staffs={nhanvien.staffs} />}
+            />
+            <Route
+              path="staffs/:id"
+              element={<StaffDetail staffs={nhanvien.staffs} />}
+            />
+            <Route
+              path="/department"
+              element={<Department dept={nhanvien.departments} />}
+            />
+            <Route
+              path="/salary"
+              element={<Salary sal={nhanvien.staffs} />}
+            />
+          </Routes>
         </div>
-      </div>
-    )
-  }
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
