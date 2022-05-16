@@ -15,17 +15,7 @@ function App() {
     staffs: STAFFS,
     departments: DEPARTMENTS,
   });
-
-  // class App extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     nhanvien = {
-  //       staffs: STAFFS,
-  //       departments: DEPARTMENTS
-  //     };
-  //   }
-
-  //   render() {
+  
   return (
     <div>
       <BrowserRouter>

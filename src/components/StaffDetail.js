@@ -1,7 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import dateFormat from "dateformat";
-import { Card, CardTitle, CardBody, CardText, CardImg } from "reactstrap";
+import {
+  Card,
+  CardTitle,
+  CardBody,
+  CardText,
+  CardImg,
+} from "reactstrap";
 
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -10,7 +16,7 @@ const StaffDetail = (props) => {
   const listStaff = props.staffs;
   const params = useParams();
   const staff = listStaff.find((s) => s.id === parseInt(params.id));
-  
+
   return (
     <div className="col-12">
       <ul className="breadcrumb">
@@ -27,7 +33,7 @@ const StaffDetail = (props) => {
           </span>
         </li>
       </ul>
-      <Card>
+      <Card className="border border-success rounded m-3 text-white bg-secondary mb-3">
         <CardBody>
           <div className="row">
             <div className="col-lg-3 col-md-4 col-sm-12">
@@ -38,7 +44,9 @@ const StaffDetail = (props) => {
               />
             </div>
             <div className="col-lg-9 col-md-8 col-sm-12">
-              <CardTitle>Họ và tên: {staff.name}</CardTitle>
+              <CardTitle className="font-weight-bold">
+                Họ và tên: {staff.name}
+              </CardTitle>
               <CardText>
                 Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}
               </CardText>

@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, CardTitle, CardBody, CardImg } from 'reactstrap';
 import '../App.css';
 
-
-
 class StaffList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -27,13 +24,10 @@ class StaffList extends Component {
         });
     }
 
-    
-
     render() {
         const stafflist = this.props.staffs.map((staff) => {
             return (
               <div className={this.state.columnDefault}>
-               
                   <Card key={staff.id}>
                     <CardBody>
                         <Link to={"/staffs/" + staff.id}>

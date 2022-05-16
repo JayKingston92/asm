@@ -6,8 +6,12 @@ class RenderDept extends Component {
   render() {
     return (
       <Card>
-        <CardTitle className="m-2">{this.props.dept.name}</CardTitle>
-        <CardText>Số lượng nhân viên: {this.props.dept.numberOfStaff}</CardText>
+        <CardTitle className="text-white bg-warning p-2 font-weight-bold">
+          Department: {this.props.dept.name}
+        </CardTitle>
+        <CardText className="m-2">
+          Số lượng NV : {this.props.dept.numberOfStaff}
+        </CardText>
       </Card>
     );
   }
